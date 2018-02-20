@@ -1,0 +1,71 @@
+/**
+ * Shared file between builds so that they can all use the same dependencies and
+ * maven repositories.
+ **/
+ext.deps = [:]
+def versions = [:]
+versions.android_gradle_plugin = "3.0.1"
+
+//External libraries
+versions.support = "27.0.2"
+versions.junit = "4.12"
+versions.espresso = "2.2.2"
+versions.kotlin = "1.2.21"
+versions.leakCanary = "1.5.4"
+versions.databinding = "3.0.1"
+versions.mockito = "2.15.0"
+versions.facebook = "4.30.0"
+versions.play_services = "11.8.0"
+
+def deps = [:]
+
+def support = [:]
+support.app_compat_v7 = "com.android.support:appcompat-v7:$versions.support"
+support.design = "com.android.support:design:$versions.support"
+support.support = "com.android.support:support-v4:$versions.support"
+deps.support = support
+
+def support_test = [:]
+support_test.runner = "com.android.support.test:runner:$versions.support_test"
+support_test.espresso_core = "com.android.support.test.espresso:espresso-core:$versions.support_test"
+deps.support_test = support_test
+
+def kotlin = [:]
+kotlin.gradle_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jre7:$versions.kotlin"
+kotlin.test = "io.kotlintest:kotlintest:2.0.7"
+deps.kotlin = kotlin
+
+def rx = [:]
+rx.runtime = "io.reactivex.rxjava2:rxjava:2.1.8"
+rx.android = "io.reactivex.rxjava2:rxandroid:2.0.1"
+rx.binding = "com.jakewharton.rxbinding2:rxbinding-kotlin:2.0.0"
+rx.kotlin = "io.reactivex.rxjava2:rxkotlin:2.2.0"
+deps.rx = rx
+
+def social = [:]
+social.facebook = "com.facebook.android:facebook-android-sdk:$versions.facebook"
+social.google = "com.google.android.gms:play-services-auth:$versions.play_services"
+deps.social = social
+
+deps.junit = "junit:junit:$versions.junit"
+deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
+deps.leakCanaryDebug = "com.squareup.leakcanary:leakcanary-android:$versions.leakCanary"
+deps.leakCanaryRelease = "com.squareup.leakcanary:leakcanary-android-no-op:$versions.leakCanary"
+deps.databindingCompiler = "com.android.databinding:compiler:$versions.databinding"
+deps.mockito = "org.mockito:mockito-core:$versions.mockito"
+ext.deps = deps
+
+def build_versions = [:]
+build_versions.min_sdk = 21
+build_versions.target_sdk = 27
+build_versions.build_tools = "27.0.2"
+ext.build_versions = build_versions
+
+def addRepos(RepositoryHandler handler) {
+    handler.jcenter()
+    handler.mavenCentral()
+    handler.google()
+}
+
+ext.addRepos = this.&addRepos
