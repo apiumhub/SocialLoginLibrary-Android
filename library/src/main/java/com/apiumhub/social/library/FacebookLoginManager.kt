@@ -9,11 +9,7 @@ import com.facebook.login.LoginResult
 import com.facebook.FacebookException
 
 data class FacebookConfiguration(val appId: String, val permissions: List<String>): SocialNetworkConfiguration
-data class SocialLoginException(val loginError: SocialLoginErrorType): Throwable()
 
-enum class SocialLoginErrorType {
-    CANCELED, FAILED, PERMISSIONS
-}
 
 class FacebookLoginManager(private val facebookConfiguration: FacebookConfiguration) : SocialManager {
 
