@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion build_versions.target_sdk
@@ -10,7 +11,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+        manifestPlaceholders = [fbLoginProtocolScheme: ""]
     }
 
     buildTypes {
@@ -30,6 +31,6 @@ dependencies {
     implementation deps.support.app_compat_v7
 
     implementation deps.social.facebook
-    implementation deps.social.google
+
 
 }

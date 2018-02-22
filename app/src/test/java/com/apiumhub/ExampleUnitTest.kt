@@ -1,4 +1,4 @@
-package com.apiumhub.social
+package com.apiumhub
 
 import org.junit.Test
 
