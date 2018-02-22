@@ -34,3 +34,41 @@ dependencies {
 
 
 }
+
+allprojects {
+    addRepos(repositories)
+
+    apply plugin: 'maven-publish'
+
+    group 'com.apiumhub.library'
+    version = externalVersion
+
+    publishing {
+        publications {
+            library(MavenPublication) {
+                groupId 'com.apiumhub.library'
+                artifactId 'social-android'
+                version externalVersion
+                artifact("$buildDir/outputs/aar/library-release.aar")
+            }
+        }
+        repositories {
+            maven {
+                name 'NexusApiumSNAPSHOT'
+                url snapshotsRepositoryUrl
+                credentials {
+                    username = deployRepoUsername
+                    password = deployRepoPassword
+                }
+            }
+            maven {
+                name 'NexusApiumRELEASE'
+                url releaseRepositoryUrl
+                credentials {
+                    username = deployRepoUsername
+                    password = deployRepoPassword
+                }
+            }
+        }
+    }
+}
