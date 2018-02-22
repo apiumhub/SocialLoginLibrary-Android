@@ -1,4 +1,4 @@
-package com.apiumhub.social;
+package com.apiumhub.library;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

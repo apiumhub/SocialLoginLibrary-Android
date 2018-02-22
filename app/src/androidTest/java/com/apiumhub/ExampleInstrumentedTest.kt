@@ -1,4 +1,4 @@
-package com.apiumhub.social
+package com.apiumhub
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4

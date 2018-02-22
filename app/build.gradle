@@ -39,8 +39,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(":library")
-
     implementation deps.kotlin.stdlib
 
     implementation deps.support.design
@@ -54,6 +52,7 @@ dependencies {
 
     testImplementation deps.junit
     testImplementation deps.kotlin.test
+    compile project(path: ':library')
 }
 repositories {
     mavenCentral()
