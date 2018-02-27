@@ -76,6 +76,5 @@ dependencies {
     testImplementation deps.kotlin.test
     compile project(path: ':library')
 }
-repositories {
-    mavenCentral()
-}
+
+
