@@ -1,0 +1,115 @@
+{
+  "project_info": {
+    "project_number": "273380565662",
+    "firebase_url": "https://social-refapp-apium.firebaseio.com",
+    "project_id": "social-refapp-apium",
+    "storage_bucket": "social-refapp-apium.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:273380565662:android:3a6d1685ae4c5076",
+        "android_client_info": {
+          "package_name": "com.apiumhub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "273380565662-3sbk4phe8bna4lmcmqvp1mo7gh1l9goa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.apiumhub",
+            "certificate_hash": "c517314bf8909db8f11aed3b90f3240ede478c9f"
+          }
+        },
+        {
+          "client_id": "273380565662-hflrtbi26a7kufe3iej122cb16p5774u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.apiumhub",
+            "certificate_hash": "831eb0a316bb9fb71521c1f6aad6d43c9314ea8f"
+          }
+        },
+        {
+          "client_id": "273380565662-mop5c2flpee0ch65kjsuotl2hio88dvp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUfxnZ0suX_ERMuviNUX0gwn78c73fo0c"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "273380565662-mop5c2flpee0ch65kjsuotl2hio88dvp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:273380565662:android:975919a75cacb79a",
+        "android_client_info": {
+          "package_name": "com.apiumhub.social"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "273380565662-63h9hsi52f5qoskk87359diug4dg4jfa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.apiumhub.social",
+            "certificate_hash": "c517314bf8909db8f11aed3b90f3240ede478c9f"
+          }
+        },
+        {
+          "client_id": "273380565662-jvgb9nlu8umvrh3skvg034ae5g1qbj0e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.apiumhub.social",
+            "certificate_hash": "831eb0a316bb9fb71521c1f6aad6d43c9314ea8f"
+          }
+        },
+        {
+          "client_id": "273380565662-mop5c2flpee0ch65kjsuotl2hio88dvp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUfxnZ0suX_ERMuviNUX0gwn78c73fo0c"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "273380565662-mop5c2flpee0ch65kjsuotl2hio88dvp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

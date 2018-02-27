@@ -31,8 +31,8 @@ dependencies {
     implementation deps.support.app_compat_v7
 
     implementation deps.social.facebook
-
-
+    implementation deps.social.google
+    implementation deps.social.firebase
 }
 
 allprojects {
@@ -68,6 +68,10 @@ allprojects {
                     username = deployRepoUsername
                     password = deployRepoPassword
                 }
+                maven {
+                    url "https://maven.google.com"
+                }
+
             }
         }
     }
