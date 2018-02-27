@@ -13,7 +13,7 @@ enum class SocialNetworkType {
 
 class MainActivity : AppCompatActivity() {
 
-    private val facebookLoginManager = FacebookLoginManager(FacebookConfiguration("179933089418674", listOf("public_profile", "email", "user_friends")), this)
+    private val facebookLoginManager = FacebookLoginManager(FacebookConfiguration(listOf("public_profile", "email", "user_friends")), this)
 
     private val googleLoginManager = GoogleLoginManager(GoogleConfiguration("273380565662-mop5c2flpee0ch65kjsuotl2hio88dvp.apps.googleusercontent.com",listOf("")), this)
 

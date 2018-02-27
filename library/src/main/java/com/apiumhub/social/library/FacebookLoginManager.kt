@@ -8,7 +8,7 @@ import com.facebook.FacebookCallback
 import com.facebook.login.LoginResult
 import com.facebook.FacebookException
 
-data class FacebookConfiguration(val appId: String, val permissions: List<String>) : SocialNetworkConfiguration
+data class FacebookConfiguration(val permissions: List<String>) : SocialNetworkConfiguration
 
 
 class FacebookLoginManager(private val facebookConfiguration: FacebookConfiguration, public override val activity: Activity) : SocialManager {
