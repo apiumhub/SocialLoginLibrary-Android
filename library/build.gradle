@@ -32,7 +32,6 @@ dependencies {
 
     implementation deps.social.facebook
     implementation deps.social.google
-    implementation deps.social.firebase
 }
 
 allprojects {

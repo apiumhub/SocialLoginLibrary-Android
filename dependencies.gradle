@@ -46,7 +46,6 @@ deps.rx = rx
 def social = [:]
 social.facebook = "com.facebook.android:facebook-android-sdk:$versions.facebook"
 social.google = "com.google.android.gms:play-services-auth:$versions.play_services"
-social.firebase = "com.google.firebase:firebase-core:$versions.play_services"
 deps.social = social
 
 deps.junit = "junit:junit:$versions.junit"
