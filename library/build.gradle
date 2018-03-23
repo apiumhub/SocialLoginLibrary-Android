@@ -3,7 +3,7 @@ apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion build_versions.target_sdk
-
+    publishNonDefault true
     defaultConfig {
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk
@@ -21,6 +21,25 @@ android {
         }
     }
 
+    flavorDimensions "social"
+
+    productFlavors {
+
+        sdks {
+            dimension "social"
+        }
+
+        rest {
+            dimension "social"
+        }
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        sdks.java.srcDirs += 'src/sdks/kotlin'
+        rest.java.srcDirs += 'src/rest/kotlin'
+    }
+
 }
 
 dependencies {
@@ -30,8 +49,12 @@ dependencies {
 
     implementation deps.support.app_compat_v7
 
-    implementation deps.social.facebook
-    implementation deps.social.google
+    sdksImplementation deps.social.facebook
+    sdksImplementation deps.social.google
+
+    restImplementation deps.retrofit.runtime
+    restImplementation deps.retrofit.rxjava
+    restImplementation deps.retrofit.gson
 }
 
 allprojects {

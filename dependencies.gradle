@@ -15,6 +15,7 @@ versions.leakCanary = "1.5.4"
 versions.databinding = "3.0.1"
 versions.mockito = "2.15.0"
 versions.facebook = "4.30.0"
+versions.retrofit = "2.3.0"
 versions.play_services = "11.8.0"
 
 def deps = [:]
@@ -42,6 +43,12 @@ rx.android = "io.reactivex.rxjava2:rxandroid:2.0.1"
 rx.binding = "com.jakewharton.rxbinding2:rxbinding-kotlin:2.0.0"
 rx.kotlin = "io.reactivex.rxjava2:rxkotlin:2.2.0"
 deps.rx = rx
+
+def retrofit = [:]
+retrofit.runtime = "com.squareup.retrofit2:retrofit:$versions.retrofit"
+retrofit.gson = "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+retrofit.rxjava = "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
+deps.retrofit = retrofit
 
 def social = [:]
 social.facebook = "com.facebook.android:facebook-android-sdk:$versions.facebook"

@@ -6,10 +6,6 @@ import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.auth.api.signin.*
 
-
-data class GoogleConfiguration(val clientId: String, val scopes: List<String>) : SocialNetworkConfiguration
-
-
 public class GoogleLoginManager(private val googleConfiguration: GoogleConfiguration, public override val activity: Activity) : SocialManager {
 
     private var mGoogleApiClient: GoogleApiClient? = null

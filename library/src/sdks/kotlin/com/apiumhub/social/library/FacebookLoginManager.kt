@@ -2,14 +2,11 @@ package com.apiumhub.social.library
 
 import android.app.Activity
 import android.content.Intent
-import com.facebook.login.LoginManager
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
-import com.facebook.login.LoginResult
 import com.facebook.FacebookException
-
-data class FacebookConfiguration(val permissions: List<String>) : SocialNetworkConfiguration
-
+import com.facebook.login.LoginManager
+import com.facebook.login.LoginResult
 
 class FacebookLoginManager(private val facebookConfiguration: FacebookConfiguration, public override val activity: Activity) : SocialManager {
 

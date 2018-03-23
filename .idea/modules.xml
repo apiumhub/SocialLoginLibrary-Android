@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Android.iml" filepath="$PROJECT_DIR$/Android.iml" />
       <module fileurl="file://$PROJECT_DIR$/SocialApium.iml" filepath="$PROJECT_DIR$/SocialApium.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SocialLoginLibrary-Android.iml" filepath="$PROJECT_DIR$/SocialLoginLibrary-Android.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/social.iml" filepath="$PROJECT_DIR$/library/social.iml" />
