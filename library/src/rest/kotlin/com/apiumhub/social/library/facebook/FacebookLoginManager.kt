@@ -1,11 +1,12 @@
-package com.apiumhub.social.library
+package com.apiumhub.social.library.facebook
 
 import android.app.Activity
 import android.content.Intent
+import com.apiumhub.social.library.SocialLoginException
+import com.apiumhub.social.library.SocialManager
+import com.apiumhub.social.library.SocialUserInformation
 
-class GoogleLoginManager: SocialManager {
-    override val activity: Activity
-        get() = TODO("not implemented") //To change initializer of created properties use File | Settings | File Templates.
+class FacebookLoginManager(override val activity: Activity): SocialManager {
 
     override fun login(activity: Activity) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.

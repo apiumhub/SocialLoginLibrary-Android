@@ -3,7 +3,6 @@ package com.apiumhub.social.library
 import android.app.Activity
 import android.content.Intent
 
-
 public interface SocialManager {
     val activity: Activity
     fun login(activity: Activity)

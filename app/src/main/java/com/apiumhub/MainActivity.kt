@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.apiumhub.databinding.ActivityMainBinding
 import com.apiumhub.social.library.*
+import com.apiumhub.social.library.facebook.FacebookLoginManager
+import com.apiumhub.social.library.google.GoogleLoginManager
 
 enum class SocialNetworkType {
     FACEBOOK, GOOGLE
@@ -15,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
     private val facebookLoginManager = FacebookLoginManager(FacebookConfiguration(listOf("public_profile", "email", "user_friends")), this)
 
-    private val googleLoginManager = GoogleLoginManager(GoogleConfiguration("273380565662-mop5c2flpee0ch65kjsuotl2hio88dvp.apps.googleusercontent.com",listOf("")), this)
+    private val googleLoginManager = GoogleLoginManager(GoogleConfiguration("273380565662-mop5c2flpee0ch65kjsuotl2hio88dvp.apps.googleusercontent.com", listOf("")), this)
 
     private lateinit var flow: SocialNetworkType
 
