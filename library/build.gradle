@@ -71,7 +71,7 @@ allprojects {
                 groupId 'com.apiumhub.library'
                 artifactId 'social-android'
                 version externalVersion
-                artifact("$buildDir/outputs/aar/library-release.aar")
+                artifact("$buildDir/outputs/aar/library-sdks-release.aar")
             }
         }
         repositories {
