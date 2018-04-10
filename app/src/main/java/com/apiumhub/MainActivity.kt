@@ -6,8 +6,6 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.apiumhub.databinding.ActivityMainBinding
 import com.apiumhub.social.library.*
-import com.apiumhub.social.library.facebook.FacebookLoginManager
-import com.apiumhub.social.library.google.GoogleLoginManager
 
 enum class SocialNetworkType {
     FACEBOOK, GOOGLE
@@ -39,13 +37,13 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         when (flow) {
             SocialNetworkType.FACEBOOK -> facebookLoginManager.onActivityResult(requestCode, resultCode, data, { userInfo: SocialUserInformation ->
                 println(userInfo.token)
+                println(userInfo.email)
             }) { error: SocialLoginException ->
                 when (error.loginError) {
                     SocialLoginErrorType.CANCELED -> println("CANCELED")
@@ -55,6 +53,7 @@ class MainActivity : AppCompatActivity() {
             }
             SocialNetworkType.GOOGLE -> googleLoginManager.onActivityResult(requestCode, resultCode, data, { userInfo: SocialUserInformation ->
                 println(userInfo.token)
+                println(userInfo.email)
             }) { error: SocialLoginException ->
                 when (error.loginError) {
                     SocialLoginErrorType.CANCELED -> println("CANCELED")

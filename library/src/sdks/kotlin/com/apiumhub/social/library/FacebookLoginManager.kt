@@ -2,13 +2,12 @@ package com.apiumhub.social.library
 
 import android.app.Activity
 import android.content.Intent
-import com.facebook.CallbackManager
-import com.facebook.FacebookCallback
-import com.facebook.FacebookException
+import android.os.Bundle
+import com.facebook.*
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 
-class FacebookLoginManager(private val facebookConfiguration: FacebookConfiguration, public override val activity: Activity) : SocialManager {
+class FacebookLoginManager(private val facebookConfiguration: FacebookConfiguration, override val activity: Activity) : SocialManager {
 
     private var callbackManager: CallbackManager? = null
 
@@ -25,7 +24,7 @@ class FacebookLoginManager(private val facebookConfiguration: FacebookConfigurat
         LoginManager.getInstance().registerCallback(callbackManager,
                 object : FacebookCallback<LoginResult> {
                     override fun onSuccess(loginResult: LoginResult) {
-                        success(SocialUserInformation(loginResult.accessToken.userId, loginResult.accessToken.token))
+                        requestEmail(success, error)
                     }
                     override fun onCancel() {
                         error(SocialLoginException(SocialLoginErrorType.CANCELED))
@@ -35,5 +34,22 @@ class FacebookLoginManager(private val facebookConfiguration: FacebookConfigurat
                     }
                 })
         callbackManager?.onActivityResult(requestCode, resultCode, data)
+    }
+
+    private fun requestEmail(success: (user: SocialUserInformation) -> Unit, error: (error: SocialLoginException) -> Unit) {
+        GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken(), {json, response ->
+            if (response.error != null || !json.has("email")) {
+                error(SocialLoginException(SocialLoginErrorType.UNKNOWN, response.error.exception))
+            }
+            else {
+                success(SocialUserInformation(AccessToken.getCurrentAccessToken().userId, AccessToken.getCurrentAccessToken().token, json.getString("email")))
+            }
+        }).apply {
+            val parameters = Bundle().apply {
+                putString("fields", "email")
+            }
+            setParameters(parameters)
+            executeAsync()
+        }
     }
 }

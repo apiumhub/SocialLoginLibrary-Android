@@ -35,8 +35,8 @@ public class GoogleLoginManager(private val googleConfiguration: GoogleConfigura
         }
         else {
             result.signInAccount.let {
-                if (it?.id != null && it.idToken != null) {
-                    success(SocialUserInformation(it.id!!, it.idToken!!))
+                if (it?.id != null && it.idToken != null && it.email != null) {
+                    success(SocialUserInformation(it.id!!, it.idToken!!, it.email!!))
                 }
                 else {
                     error(SocialLoginException(SocialLoginErrorType.FAILED))
