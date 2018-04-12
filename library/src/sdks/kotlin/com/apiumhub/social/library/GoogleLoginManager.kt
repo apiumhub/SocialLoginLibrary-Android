@@ -2,11 +2,24 @@ package com.apiumhub.social.library
 
 import android.app.Activity
 import android.content.Intent
+import android.support.v4.app.Fragment
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.auth.api.signin.*
 
-public class GoogleLoginManager(private val googleConfiguration: GoogleConfiguration, public override val activity: Activity) : SocialManager {
+class GoogleLoginManager(
+        googleConfiguration: GoogleConfiguration,
+        override val fragment: Fragment? = null,
+        override val activity: Activity? = null) : SocialManager {
+
+    init {
+        if (fragment == null && activity == null) {
+            throw IllegalArgumentException("Either a fragment or an activity must be provided on the constructor")
+        }
+        else if (fragment != null && activity != null) {
+            throw IllegalArgumentException("Provide only a fragment OR an activity")
+        }
+    }
 
     private var mGoogleApiClient: GoogleApiClient? = null
     private val mGoogleConfiguration: GoogleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -14,13 +27,19 @@ public class GoogleLoginManager(private val googleConfiguration: GoogleConfigura
             .requestIdToken(googleConfiguration.clientId)
             .build()
 
-    override fun login(activity: Activity) {
-        mGoogleApiClient = GoogleApiClient.Builder(activity)
+    override fun login() {
+
+        mGoogleApiClient = GoogleApiClient.Builder(
+                activity ?: fragment?.context!!)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, mGoogleConfiguration)
                 .build()
 
         val intent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient)
-        activity.startActivityForResult(intent, 1234)
+        when {
+            activity != null -> activity.startActivityForResult(intent, 1234)
+            fragment != null -> fragment.startActivityForResult(intent, 1234)
+            else -> throw IllegalStateException("Both activity and fragment are null")
+        }
     }
 
     override fun logout() {

@@ -13,9 +13,11 @@ enum class SocialNetworkType {
 
 class MainActivity : AppCompatActivity() {
 
-    private val facebookLoginManager = FacebookLoginManager(FacebookConfiguration(listOf("public_profile", "email", "user_friends")), this)
+    private val facebookLoginManager = FacebookLoginManager(
+            FacebookConfiguration(listOf("public_profile", "email", "user_friends")), activity = this)
 
-    private val googleLoginManager = GoogleLoginManager(GoogleConfiguration("273380565662-mop5c2flpee0ch65kjsuotl2hio88dvp.apps.googleusercontent.com", listOf("")), this)
+    private val googleLoginManager = GoogleLoginManager(
+            GoogleConfiguration("273380565662-mop5c2flpee0ch65kjsuotl2hio88dvp.apps.googleusercontent.com", listOf("")), activity = this)
 
     private lateinit var flow: SocialNetworkType
 
@@ -27,12 +29,12 @@ class MainActivity : AppCompatActivity() {
 
         binding.activityMainFacebookLogin.setOnClickListener {
             flow = SocialNetworkType.FACEBOOK
-            facebookLoginManager.login(this)
+            facebookLoginManager.login()
         }
 
         binding.activityMainGoogleLogin.setOnClickListener {
             flow = SocialNetworkType.GOOGLE
-            googleLoginManager.login(this)
+            googleLoginManager.login()
         }
 
     }

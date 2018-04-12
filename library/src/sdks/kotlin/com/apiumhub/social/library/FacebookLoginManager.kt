@@ -3,17 +3,34 @@ package com.apiumhub.social.library
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import com.facebook.*
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 
-class FacebookLoginManager(private val facebookConfiguration: FacebookConfiguration, override val activity: Activity) : SocialManager {
+class FacebookLoginManager(
+        private val facebookConfiguration: FacebookConfiguration,
+        override val fragment: Fragment? = null,
+        override val activity: Activity? = null) : SocialManager {
 
     private var callbackManager: CallbackManager? = null
 
-    override fun login(activity: Activity) {
+    init {
+        if (fragment == null && activity == null) {
+            throw IllegalArgumentException("Either a fragment or an activity must be provided on the constructor")
+        }
+        else if (fragment != null && activity != null) {
+            throw IllegalArgumentException("Provide only a fragment OR an activity")
+        }
+    }
+
+    override fun login() {
         callbackManager = CallbackManager.Factory.create()
-        LoginManager.getInstance().logInWithReadPermissions(this.activity, facebookConfiguration.permissions)
+        when {
+            fragment != null -> LoginManager.getInstance().logInWithReadPermissions(fragment, facebookConfiguration.permissions)
+            activity != null -> LoginManager.getInstance().logInWithReadPermissions(activity, facebookConfiguration.permissions)
+            else -> throw IllegalStateException("Fragment and activity are both null")
+        }
     }
 
     override fun logout() {

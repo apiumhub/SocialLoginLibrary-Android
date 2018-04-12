@@ -64,7 +64,7 @@ deps.mockito = "org.mockito:mockito-core:$versions.mockito"
 ext.deps = deps
 
 def build_versions = [:]
-build_versions.min_sdk = 21
+build_versions.min_sdk = 16
 build_versions.target_sdk = 27
 build_versions.build_tools = "27.0.2"
 ext.build_versions = build_versions
