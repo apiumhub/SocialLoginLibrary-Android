@@ -47,7 +47,7 @@ class FacebookLoginManager(
                         error(SocialLoginException(SocialLoginErrorType.CANCELED))
                     }
                     override fun onError(error: FacebookException?) {
-                        error(SocialLoginException(SocialLoginErrorType.FAILED))
+                        error(SocialLoginException(SocialLoginErrorType.FAILED, error))
                     }
                 })
         callbackManager?.onActivityResult(requestCode, resultCode, data)
