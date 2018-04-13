@@ -56,7 +56,7 @@ class FacebookLoginManager(
     private fun requestEmail(success: (user: SocialUserInformation) -> Unit, error: (error: SocialLoginException) -> Unit) {
         GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken(), {json, response ->
             if (response.error != null || !json.has("email")) {
-                error(SocialLoginException(SocialLoginErrorType.UNKNOWN, response.error.exception))
+                error(SocialLoginException(SocialLoginErrorType.FAILED, response.error.exception))
             }
             else {
                 success(SocialUserInformation(AccessToken.getCurrentAccessToken().userId, AccessToken.getCurrentAccessToken().token, json.getString("email")))

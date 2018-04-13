@@ -2,5 +2,5 @@ package com.apiumhub.social.library
 
 
 enum class SocialLoginErrorType {
-    CANCELED, FAILED, PERMISSIONS, UNKNOWN
+    CANCELED, FAILED, PERMISSIONS
 }
