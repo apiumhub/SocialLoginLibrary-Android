@@ -44,7 +44,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
+    implementation project(':linkedin-sdk')
     implementation deps.kotlin.stdlib
 
     implementation deps.support.app_compat_v7
