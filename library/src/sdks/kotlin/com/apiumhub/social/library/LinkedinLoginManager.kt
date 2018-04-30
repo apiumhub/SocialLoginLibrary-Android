@@ -14,6 +14,7 @@ import com.linkedin.platform.errors.LIAuthError
 import com.linkedin.platform.listeners.ApiListener
 import com.linkedin.platform.listeners.ApiResponse
 import com.linkedin.platform.listeners.AuthListener
+import com.linkedin.platform.utils.Scope
 
 
 class LinkedinLoginManager(
@@ -31,8 +32,8 @@ class LinkedinLoginManager(
     }
 
 
-    private val scope = configuration.scope
-    private val linkedinInfoTag: String = configuration.userReqURL
+    private val scope = Scope.build(Scope.R_BASICPROFILE, Scope.R_EMAILADDRESS)
+    private val linkedinInfoTag: String = "https://api.linkedin.com/v1/people/~:(id,email-address)?format=json"
 
     private val id = "id"
     private val email = "emailAddress"
@@ -81,9 +82,10 @@ class LinkedinLoginManager(
     private fun successHandler(apiResponse: ApiResponse?) {
         val json = apiResponse?.responseDataAsJson
         if (json?.getString(email).isNullOrBlank() && json?.getString(id).isNullOrBlank()) {
-            success(SocialUserInformation(json!!.getString(id), "", json.getString(email)))
-        } else {
             error(SocialLoginException(PERMISSIONS, Throwable("Check request scope permission")))
+
+        } else {
+            success(SocialUserInformation(json!!.getString(id), "", json.getString(email)))
         }
     }
 
