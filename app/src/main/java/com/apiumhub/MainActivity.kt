@@ -13,12 +13,11 @@ import com.apiumhub.social.library.FacebookConfiguration
 import com.apiumhub.social.library.FacebookLoginManager
 import com.apiumhub.social.library.GoogleConfiguration
 import com.apiumhub.social.library.GoogleLoginManager
-import com.apiumhub.social.library.LinkedinConfiguration
 import com.apiumhub.social.library.LinkedinLoginManager
+import com.apiumhub.social.library.LinkedinLoginManager.LinkedinConfigurationBuilder
 import com.apiumhub.social.library.SocialLoginErrorType
 import com.apiumhub.social.library.SocialLoginException
 import com.apiumhub.social.library.SocialUserInformation
-import com.linkedin.platform.utils.Scope
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
@@ -41,8 +40,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        linkedinLoginManager = LinkedinLoginManager(
-            LinkedinConfiguration(listOf("")), activity = this)
+        linkedinLoginManager = LinkedinConfigurationBuilder.requestId().requestEmail().build(activity = this)
 
         val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
 

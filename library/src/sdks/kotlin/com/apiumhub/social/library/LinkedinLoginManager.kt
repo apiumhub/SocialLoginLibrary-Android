@@ -15,9 +15,10 @@ import com.linkedin.platform.listeners.ApiListener
 import com.linkedin.platform.listeners.ApiResponse
 import com.linkedin.platform.listeners.AuthListener
 import com.linkedin.platform.utils.Scope
+import com.linkedin.platform.utils.Scope.LIPermission
 
-
-class LinkedinLoginManager(
+class LinkedinLoginManager
+private constructor(
     configuration: LinkedinConfiguration,
     override val activity: Activity,
     override val fragment: Fragment? = null) : SocialManager {
@@ -32,8 +33,9 @@ class LinkedinLoginManager(
     }
 
 
-    private val scope = Scope.build(Scope.R_BASICPROFILE, Scope.R_EMAILADDRESS)
-    private val linkedinInfoTag: String = "https://api.linkedin.com/v1/people/~:(id,email-address)?format=json"
+    private val scope = Scope.build(*configuration.scopes.toTypedArray())
+    private val linkedinInfoTag: String = "https://api.linkedin.com/v1/people/~:(${configuration.permissions.joinToString(
+        ",")})?format=json"
 
     private val id = "id"
     private val email = "emailAddress"
@@ -96,4 +98,32 @@ class LinkedinLoginManager(
             error(SocialLoginException(FAILED, Throwable(error.toString())))
         }
     }
+
+    object LinkedinConfigurationBuilder {
+        private val permissionsList: MutableList<String> = mutableListOf()
+        private val scopes: MutableSet<LIPermission> = mutableSetOf()
+
+        fun requestEmail(): LinkedinConfigurationBuilder {
+            permissionsList.add("email-address")
+            scopes.add(Scope.R_EMAILADDRESS)
+            return this
+        }
+
+        fun requestId(): LinkedinConfigurationBuilder {
+            permissionsList.add("id")
+            scopes.add(Scope.R_BASICPROFILE)
+            return this
+        }
+
+        fun requestProfilePicture(): LinkedinConfigurationBuilder {
+            permissionsList.add("profile-picture")
+            scopes.add(Scope.R_BASICPROFILE)
+            return this
+        }
+
+        fun build(activity: Activity): LinkedinLoginManager {
+            return LinkedinLoginManager(LinkedinConfiguration(permissionsList, scopes), activity)
+        }
+    }
 }
+
