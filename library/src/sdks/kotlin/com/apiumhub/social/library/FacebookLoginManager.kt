@@ -4,6 +4,8 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import com.apiumhub.social.library.SocialLoginErrorType.FAILED
+import com.apiumhub.social.library.SocialLoginErrorType.NO_EMAIL
 import com.facebook.AccessToken
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
@@ -59,8 +61,10 @@ class FacebookLoginManager(
 
     private fun requestEmail(success: (user: SocialUserInformation) -> Unit, error: (error: SocialLoginException) -> Unit) {
         GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken(), {json, response ->
-            if (response.error != null || !json.has("email")) {
-                error(SocialLoginException(SocialLoginErrorType.FAILED, response.error.exception))
+            if (response.error != null) {
+                error(SocialLoginException(FAILED, response.error.exception))
+            } else if (!json.has("email")) {
+                error(SocialLoginException(NO_EMAIL))
             }
             else {
                 success(SocialUserInformation(AccessToken.getCurrentAccessToken().userId, AccessToken.getCurrentAccessToken().token, json.getString("email")))

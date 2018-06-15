@@ -16,6 +16,9 @@ import com.apiumhub.social.library.GoogleLoginManager
 import com.apiumhub.social.library.LinkedinLoginManager
 import com.apiumhub.social.library.LinkedinLoginManager.LinkedinConfigurationBuilder
 import com.apiumhub.social.library.SocialLoginErrorType
+import com.apiumhub.social.library.SocialLoginErrorType.CANCELED
+import com.apiumhub.social.library.SocialLoginErrorType.FAILED
+import com.apiumhub.social.library.SocialLoginErrorType.NO_EMAIL
 import com.apiumhub.social.library.SocialLoginException
 import com.apiumhub.social.library.SocialUserInformation
 import java.security.MessageDigest
@@ -70,8 +73,9 @@ class MainActivity : AppCompatActivity() {
                     println(userInfo.email)
                 }) { error: SocialLoginException ->
                 when (error.loginError) {
-                    SocialLoginErrorType.CANCELED -> println("CANCELED")
-                    SocialLoginErrorType.FAILED -> println("FAILED")
+                    CANCELED -> println("CANCELED")
+                    FAILED -> println("FAILED")
+                    NO_EMAIL -> println("NO EMAIL")
                     else -> println("OTHER ERRORS")
                 }
             }
