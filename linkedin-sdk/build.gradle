@@ -1,26 +1,13 @@
-allprojects {
-    repositories {
-        mavenCentral()
-    }
-}
-
-buildscript {
-   repositories {
-     mavenCentral()
-   }
-
-}
-
 apply plugin: 'com.android.library'
 
 android {
     sourceSets {
         androidTest {
-          setRoot('src/test')
+            setRoot('src/test')
         }
     }
     compileSdkVersion build_versions.target_sdk
-    buildToolsVersion "19.1.0"
+    buildToolsVersion build_versions.build_tools
 
     defaultConfig {
         minSdkVersion build_versions.min_sdk
@@ -35,13 +22,9 @@ android {
         }
     }
     lintOptions {
-          abortOnError false
+        abortOnError false
     }
 }
-
-configurations {
-}
-
 
 dependencies {
     implementation "com.android.support:support-annotations:$deps.versions.support"

@@ -71,14 +71,14 @@ class MainActivity : AppCompatActivity() {
                 { userInfo: SocialUserInformation ->
                     println(userInfo.token)
                     println(userInfo.email)
-                }) { error: SocialLoginException ->
+                }, { error: SocialLoginException ->
                 when (error.loginError) {
                     CANCELED -> println("CANCELED")
                     FAILED -> println("FAILED")
                     NO_EMAIL -> println("NO EMAIL")
                     else -> println("OTHER ERRORS")
                 }
-            }
+            })
             SocialNetworkType.GOOGLE -> googleLoginManager.onActivityResult(requestCode, resultCode, data,
                 { userInfo: SocialUserInformation ->
                     println(userInfo.token)
