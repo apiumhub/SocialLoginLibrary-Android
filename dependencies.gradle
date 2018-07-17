@@ -16,6 +16,7 @@ versions.leakCanary = "1.5.4"
 versions.databinding = "3.0.1"
 versions.mockito = "2.15.0"
 versions.facebook = "4.30.0"
+versions.wechat = "5.1.4"
 versions.retrofit = "2.3.0"
 versions.play_services = "11.8.0"
 
@@ -54,6 +55,7 @@ deps.retrofit = retrofit
 def social = [:]
 social.facebook = "com.facebook.android:facebook-android-sdk:$versions.facebook"
 social.google = "com.google.android.gms:play-services-auth:$versions.play_services"
+social.wechat = "com.tencent.mm.opensdk:wechat-sdk-android-without-mta:$versions.wechat"
 deps.social = social
 
 deps.junit = "junit:junit:$versions.junit"

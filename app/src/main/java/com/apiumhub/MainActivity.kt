@@ -9,32 +9,23 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Base64
 import android.util.Log
 import com.apiumhub.databinding.ActivityMainBinding
-import com.apiumhub.social.library.FacebookConfiguration
-import com.apiumhub.social.library.FacebookLoginManager
-import com.apiumhub.social.library.GoogleConfiguration
-import com.apiumhub.social.library.GoogleLoginManager
-import com.apiumhub.social.library.LinkedinLoginManager
+import com.apiumhub.social.library.*
 import com.apiumhub.social.library.LinkedinLoginManager.LinkedinConfigurationBuilder
-import com.apiumhub.social.library.SocialLoginErrorType
-import com.apiumhub.social.library.SocialLoginErrorType.CANCELED
-import com.apiumhub.social.library.SocialLoginErrorType.FAILED
-import com.apiumhub.social.library.SocialLoginErrorType.NO_EMAIL
-import com.apiumhub.social.library.SocialLoginException
-import com.apiumhub.social.library.SocialUserInformation
+import com.apiumhub.social.library.SocialLoginErrorType.*
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
 enum class SocialNetworkType {
-    FACEBOOK, GOOGLE, LINKEDIN
+    FACEBOOK, GOOGLE, LINKEDIN, WECHAT
 }
 
 class MainActivity : AppCompatActivity() {
 
     private val facebookLoginManager = FacebookLoginManager(
-        FacebookConfiguration(listOf("public_profile", "email", "user_friends")), activity = this)
+            FacebookConfiguration(listOf("public_profile", "email", "user_friends")), activity = this)
 
     private val googleLoginManager = GoogleLoginManager(
-        GoogleConfiguration("273380565662-mop5c2flpee0ch65kjsuotl2hio88dvp.apps.googleusercontent.com", listOf("")), activity = this)
+            GoogleConfiguration("273380565662-mop5c2flpee0ch65kjsuotl2hio88dvp.apps.googleusercontent.com", listOf("")), activity = this)
 
     private lateinit var linkedinLoginManager: LinkedinLoginManager
 
@@ -68,10 +59,10 @@ class MainActivity : AppCompatActivity() {
 
         when (flow) {
             SocialNetworkType.FACEBOOK -> facebookLoginManager.onActivityResult(requestCode, resultCode, data,
-                { userInfo: SocialUserInformation ->
-                    println(userInfo.token)
-                    println(userInfo.email)
-                }, { error: SocialLoginException ->
+                    { userInfo: SocialUserInformation ->
+                        println(userInfo.token)
+                        println(userInfo.email)
+                    }, { error: SocialLoginException ->
                 when (error.loginError) {
                     CANCELED -> println("CANCELED")
                     FAILED -> println("FAILED")
@@ -80,10 +71,10 @@ class MainActivity : AppCompatActivity() {
                 }
             })
             SocialNetworkType.GOOGLE -> googleLoginManager.onActivityResult(requestCode, resultCode, data,
-                { userInfo: SocialUserInformation ->
-                    println(userInfo.token)
-                    println(userInfo.email)
-                }) { error: SocialLoginException ->
+                    { userInfo: SocialUserInformation ->
+                        println(userInfo.token)
+                        println(userInfo.email)
+                    }) { error: SocialLoginException ->
                 when (error.loginError) {
                     SocialLoginErrorType.CANCELED -> println("CANCELED")
                     SocialLoginErrorType.FAILED -> println("FAILED")
@@ -91,10 +82,10 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             SocialNetworkType.LINKEDIN -> linkedinLoginManager.onActivityResult(requestCode, resultCode, data,
-                { userInfo: SocialUserInformation ->
-                    println(userInfo.userId)
-                    println(userInfo.email)
-                }) { error: SocialLoginException ->
+                    { userInfo: SocialUserInformation ->
+                        println(userInfo.userId)
+                        println(userInfo.email)
+                    }) { error: SocialLoginException ->
                 when (error.loginError) {
                     SocialLoginErrorType.CANCELED -> println("CANCELED")
                     SocialLoginErrorType.FAILED -> println("FAILED ${error.originalError.toString()}")
@@ -110,14 +101,14 @@ class MainActivity : AppCompatActivity() {
         try {
 
             @SuppressLint("PackageManagerGetSignatures") val info = packageManager.getPackageInfo(
-                "com.apiumhub.social", //give your package name here
-                PackageManager.GET_SIGNATURES)
+                    "com.apiumhub.social", //give your package name here
+                    PackageManager.GET_SIGNATURES)
             for (signature in info.signatures) {
                 val md = MessageDigest.getInstance("SHA")
                 md.update(signature.toByteArray())
 
                 Log.d("linkedin",
-                    "Hash  : " + Base64.encodeToString(md.digest(), Base64.NO_WRAP))//Key hash is printing in Log
+                        "Hash  : " + Base64.encodeToString(md.digest(), Base64.NO_WRAP))//Key hash is printing in Log
             }
         } catch (e: PackageManager.NameNotFoundException) {
             Log.d("linkedin", e.message, e)

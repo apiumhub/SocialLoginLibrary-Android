@@ -42,15 +42,22 @@ android {
 
 }
 
+task sourceJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier "sources"
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':linkedin-sdk')
+
     implementation deps.kotlin.stdlib
 
     implementation deps.support.app_compat_v7
 
-    sdksImplementation deps.social.facebook
-    sdksImplementation deps.social.google
+    sdksApi deps.social.facebook
+    sdksApi deps.social.google
+    sdksApi deps.social.wechat
 
     restImplementation deps.retrofit.runtime
     restImplementation deps.retrofit.rxjava
@@ -72,6 +79,20 @@ allprojects {
                 artifactId 'social-android'
                 version externalVersion
                 artifact("$buildDir/outputs/aar/library-sdks-release.aar")
+                artifact(sourceJar)
+                pom.withXml {
+                    def dependenciesNode = asNode().appendNode('dependencies')
+                    //Iterate over the compile dependencies (we don't want the test ones), adding a <dependency> node for each
+                    configurations.sdksApi.allDependencies.each {
+                        if(it.group != null && (it.name != null || "unspecified" == it.name) && it.version != null)
+                        {
+                            def dependencyNode = dependenciesNode.appendNode('dependency')
+                            dependencyNode.appendNode('groupId', it.group)
+                            dependencyNode.appendNode('artifactId', it.name)
+                            dependencyNode.appendNode('version', it.version)
+                        }
+                    }
+                }
             }
         }
         repositories {

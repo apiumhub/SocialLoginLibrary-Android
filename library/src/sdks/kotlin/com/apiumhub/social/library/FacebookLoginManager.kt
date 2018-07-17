@@ -60,7 +60,7 @@ class FacebookLoginManager(
     }
 
     private fun requestEmail(success: (user: SocialUserInformation) -> Unit, error: (error: SocialLoginException) -> Unit) {
-        GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken(), {json, response ->
+        GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken()) { json, response ->
             if (response.error != null) {
                 error(SocialLoginException(FAILED, response.error.exception))
             } else if (!json.has("email")) {
@@ -69,7 +69,7 @@ class FacebookLoginManager(
             else {
                 success(SocialUserInformation(AccessToken.getCurrentAccessToken().userId, AccessToken.getCurrentAccessToken().token, json.getString("email")))
             }
-        }).apply {
+        }.apply {
             val parameters = Bundle().apply {
                 putString("fields", "email")
             }
