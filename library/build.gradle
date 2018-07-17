@@ -79,7 +79,7 @@ allprojects {
                 artifactId 'social-android'
                 version externalVersion
                 artifact("$buildDir/outputs/aar/library-sdks-release.aar")
-                artifact(sourceJar)
+//                artifact(sourceJar)
                 pom.withXml {
                     def dependenciesNode = asNode().appendNode('dependencies')
                     //Iterate over the compile dependencies (we don't want the test ones), adding a <dependency> node for each
