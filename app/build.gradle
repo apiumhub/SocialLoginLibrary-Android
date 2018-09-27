@@ -1,7 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion build_versions.target_sdk
@@ -43,10 +42,6 @@ android {
         }
     }
 
-    dataBinding {
-        enabled = true
-    }
-
     // Ensure the no-op dependency is always used in JVM tests.
     configurations.all { config ->
         if (config.name.contains('UnitTest')) {
@@ -85,10 +80,6 @@ dependencies {
 
     debugImplementation deps.leakCanaryDebug
     releaseImplementation deps.leakCanaryRelease
-
-    kapt deps.databindingCompiler
-
-    kaptTest deps.databindingCompiler
 
     testImplementation deps.junit
     testImplementation deps.kotlin.test

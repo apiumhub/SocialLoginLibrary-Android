@@ -3,15 +3,14 @@ package com.apiumhub
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Base64
 import android.util.Log
-import com.apiumhub.databinding.ActivityMainBinding
 import com.apiumhub.social.library.*
 import com.apiumhub.social.library.LinkedinLoginManager.LinkedinConfigurationBuilder
 import com.apiumhub.social.library.SocialLoginErrorType.*
+import kotlinx.android.synthetic.main.activity_main.*
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
@@ -36,19 +35,17 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         linkedinLoginManager = LinkedinConfigurationBuilder.requestId().requestEmail().build(activity = this)
 
-        val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
-
-        binding.activityMainFacebookLogin.setOnClickListener {
+        activity_main_facebook_login.setOnClickListener {
             flow = SocialNetworkType.FACEBOOK
             facebookLoginManager.login()
         }
 
-        binding.activityMainGoogleLogin.setOnClickListener {
+        activity_main_google_login.setOnClickListener {
             flow = SocialNetworkType.GOOGLE
             googleLoginManager.login()
         }
 
-        binding.activityMainLinkedinLogin.setOnClickListener {
+        activity_main_linkedin_login.setOnClickListener {
             flow = SocialNetworkType.LINKEDIN
             linkedinLoginManager.login()
         }

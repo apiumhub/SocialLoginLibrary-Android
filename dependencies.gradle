@@ -5,20 +5,19 @@
 ext.deps = [:]
 def deps = [:]
 def versions = [:]
-versions.android_gradle_plugin = "3.0.1"
+versions.android_gradle_plugin = "3.2.0"
 
 //External libraries
-versions.support = "27.1.1"
+versions.support = "28.0.0"
 versions.junit = "4.12"
 versions.espresso = "2.2.2"
-versions.kotlin = "1.2.21"
+versions.kotlin = "1.2.51"
 versions.leakCanary = "1.5.4"
-versions.databinding = "3.0.1"
 versions.mockito = "2.15.0"
-versions.facebook = "4.30.0"
+versions.facebook = "4.36.1"
 versions.wechat = "5.1.4"
 versions.retrofit = "2.3.0"
-versions.play_services = "11.8.0"
+versions.play_services = "16.0.0"
 
 deps.versions = versions
 
@@ -35,7 +34,7 @@ deps.support_test = support_test
 
 def kotlin = [:]
 kotlin.gradle_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
-kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jre7:$versions.kotlin"
+kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
 kotlin.test = "io.kotlintest:kotlintest:2.0.7"
 deps.kotlin = kotlin
 
@@ -53,7 +52,7 @@ retrofit.rxjava = "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
 deps.retrofit = retrofit
 
 def social = [:]
-social.facebook = "com.facebook.android:facebook-android-sdk:$versions.facebook"
+social.facebook = "com.facebook.android:facebook-login:$versions.facebook"
 social.google = "com.google.android.gms:play-services-auth:$versions.play_services"
 social.wechat = "com.tencent.mm.opensdk:wechat-sdk-android-without-mta:$versions.wechat"
 deps.social = social
@@ -62,14 +61,13 @@ deps.junit = "junit:junit:$versions.junit"
 deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
 deps.leakCanaryDebug = "com.squareup.leakcanary:leakcanary-android:$versions.leakCanary"
 deps.leakCanaryRelease = "com.squareup.leakcanary:leakcanary-android-no-op:$versions.leakCanary"
-deps.databindingCompiler = "com.android.databinding:compiler:$versions.databinding"
 deps.mockito = "org.mockito:mockito-core:$versions.mockito"
 ext.deps = deps
 
 def build_versions = [:]
 build_versions.min_sdk = 16
-build_versions.target_sdk = 27
-build_versions.build_tools = "27.0.2"
+build_versions.target_sdk = 28
+build_versions.build_tools = "28.0.2"
 ext.build_versions = build_versions
 
 static def addRepos(RepositoryHandler handler) {
