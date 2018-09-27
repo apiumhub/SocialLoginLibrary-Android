@@ -29,15 +29,15 @@ android {
             dimension "social"
         }
 
-        rest {
-            dimension "social"
-        }
+//        rest {
+//            dimension "social"
+//        }
     }
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
         sdks.java.srcDirs += 'src/sdks/kotlin'
-        rest.java.srcDirs += 'src/rest/kotlin'
+//        rest.java.srcDirs += 'src/rest/kotlin'
     }
 
 }
@@ -59,9 +59,9 @@ dependencies {
     sdksApi deps.social.google
     sdksApi deps.social.wechat
 
-    restImplementation deps.retrofit.runtime
-    restImplementation deps.retrofit.rxjava
-    restImplementation deps.retrofit.gson
+//    restImplementation deps.retrofit.runtime
+//    restImplementation deps.retrofit.rxjava
+//    restImplementation deps.retrofit.gson
 }
 
 allprojects {
