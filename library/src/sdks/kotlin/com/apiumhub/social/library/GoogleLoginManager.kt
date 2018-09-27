@@ -2,14 +2,14 @@ package com.apiumhub.social.library
 
 import android.app.Activity
 import android.content.Intent
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.auth.api.signin.*
 
 class GoogleLoginManager(
         googleConfiguration: GoogleConfiguration,
-        override val fragment: Fragment? = null,
+        override val fragment: androidx.fragment.app.Fragment? = null,
         override val activity: Activity? = null) : SocialManager {
 
     init {

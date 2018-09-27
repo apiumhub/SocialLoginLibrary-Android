@@ -18,6 +18,7 @@ versions.facebook = "4.36.1"
 versions.wechat = "5.1.4"
 versions.retrofit = "2.3.0"
 versions.play_services = "16.0.0"
+versions.androidx = "1.0.0-rc01"
 
 deps.versions = versions
 
@@ -56,6 +57,13 @@ social.facebook = "com.facebook.android:facebook-login:$versions.facebook"
 social.google = "com.google.android.gms:play-services-auth:$versions.play_services"
 social.wechat = "com.tencent.mm.opensdk:wechat-sdk-android-without-mta:$versions.wechat"
 deps.social = social
+
+def androidx = [:]
+androidx.annotation = "androidx.annotation:annotation:$versions.androidx"
+androidx.legacyV4 = "androidx.legacy:legacy-support-v4:$versions.androidx"
+androidx.material = "com.google.android.material:material:$versions.androidx"
+androidx.appcompat = "androidx.appcompat:appcompat:$versions.androidx"
+deps.androidx = androidx
 
 deps.junit = "junit:junit:$versions.junit"
 deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_gradle_plugin"

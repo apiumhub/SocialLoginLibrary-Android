@@ -2,13 +2,13 @@ package com.apiumhub.social.library
 
 import android.app.Activity
 import android.content.Intent
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import com.tencent.mm.opensdk.modelmsg.SendAuth
 import com.tencent.mm.opensdk.openapi.WXAPIFactory
 
 class WeChatLoginManager(
         private val weChatConfiguration: WeChatConfiguration,
-        override val fragment: Fragment? = null,
+        override val fragment: androidx.fragment.app.Fragment? = null,
         override val activity: Activity? = null) : SocialManager {
 
     private val wxApi = WXAPIFactory.createWXAPI(activity ?: fragment?.activity, weChatConfiguration.appId, false)

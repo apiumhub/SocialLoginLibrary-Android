@@ -10,7 +10,7 @@ android {
         targetSdkVersion build_versions.target_sdk
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         manifestPlaceholders = [fbAppId: "179933089418674", fbLoginProtocolScheme: "fb179933089418674"]
     }
@@ -73,10 +73,8 @@ dependencies {
     implementation project(path: ':library')
     implementation project(':linkedin-sdk')
 
-
+    implementation deps.androidx.material
     implementation deps.kotlin.stdlib
-
-    implementation deps.support.design
 
     debugImplementation deps.leakCanaryDebug
     releaseImplementation deps.leakCanaryRelease

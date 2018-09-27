@@ -10,7 +10,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         manifestPlaceholders = [fbLoginProtocolScheme: ""]
     }
 
@@ -53,15 +53,10 @@ dependencies {
 
     implementation deps.kotlin.stdlib
 
-    implementation deps.support.app_compat_v7
+    implementation deps.androidx.appcompat
 
-    sdksApi(deps.social.facebook) {
-        exclude group: 'com.android.support', module: 'support-v4'
-        exclude group: 'com.android.support', module: 'support-media-compat'
-    }
-    sdksApi(deps.social.google) {
-        exclude group: 'com.android.support', module: 'support-v4'
-    }
+    sdksApi deps.social.facebook
+    sdksApi deps.social.google
     sdksApi deps.social.wechat
 
     restImplementation deps.retrofit.runtime

@@ -2,7 +2,7 @@ package com.apiumhub.social.library
 
 import android.app.Activity
 import android.content.Intent
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import com.apiumhub.social.library.SocialLoginErrorType.CANCELED
 import com.apiumhub.social.library.SocialLoginErrorType.FAILED
 import com.apiumhub.social.library.SocialLoginErrorType.PERMISSIONS
@@ -21,7 +21,7 @@ class LinkedinLoginManager
 private constructor(
     configuration: LinkedinConfiguration,
     override val activity: Activity,
-    override val fragment: Fragment? = null) : SocialManager {
+    override val fragment: androidx.fragment.app.Fragment? = null) : SocialManager {
     private val linkedinManager: LISessionManager
 
     init {
