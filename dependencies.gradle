@@ -17,7 +17,7 @@ versions.mockito = "2.15.0"
 versions.facebook = "4.36.1"
 versions.wechat = "5.1.4"
 versions.retrofit = "2.3.0"
-versions.play_services = "16.0.0"
+versions.play_services = "15.0.1"
 versions.androidx = "1.0.0-rc01"
 
 deps.versions = versions
