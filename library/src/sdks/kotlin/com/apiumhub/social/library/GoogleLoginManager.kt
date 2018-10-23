@@ -2,7 +2,6 @@ package com.apiumhub.social.library
 
 import android.app.Activity
 import android.content.Intent
-import androidx.fragment.app.Fragment
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.auth.api.signin.*

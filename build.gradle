@@ -7,9 +7,6 @@ buildscript {
         classpath deps.android_gradle_plugin
         classpath deps.kotlin.gradle_plugin
     }
-    repositories {
-        mavenCentral()
-    }
 }
 
 allprojects {

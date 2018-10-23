@@ -79,9 +79,9 @@ build_versions.build_tools = "28.0.2"
 ext.build_versions = build_versions
 
 static def addRepos(RepositoryHandler handler) {
+    handler.google()
     handler.jcenter()
     handler.mavenCentral()
-    handler.google()
 }
 
 ext.addRepos = this.&addRepos

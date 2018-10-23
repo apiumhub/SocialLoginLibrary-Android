@@ -29,22 +29,12 @@ android {
             dimension "social"
         }
 
-//        rest {
-//            dimension "social"
-//        }
     }
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
         sdks.java.srcDirs += 'src/sdks/kotlin'
-//        rest.java.srcDirs += 'src/rest/kotlin'
     }
-
-}
-
-task sourceJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier "sources"
 }
 
 dependencies {
@@ -58,10 +48,6 @@ dependencies {
     sdksApi deps.social.facebook
     sdksApi deps.social.google
     sdksApi deps.social.wechat
-
-//    restImplementation deps.retrofit.runtime
-//    restImplementation deps.retrofit.rxjava
-//    restImplementation deps.retrofit.gson
 }
 
 allprojects {
@@ -72,14 +58,19 @@ allprojects {
     group 'com.apiumhub.library'
     version = externalVersion
 
+    task sourceJar(type: Jar) {
+        from android.sourceSets.main.java.srcDirs
+        classifier "sources"
+    }
+
     publishing {
         publications {
             library(MavenPublication) {
                 groupId 'com.apiumhub.library'
                 artifactId 'social-android'
                 version externalVersion
+                artifact(sourceJar)
                 artifact("$buildDir/outputs/aar/library-sdks-release.aar")
-//                artifact(sourceJar)
                 pom.withXml {
                     def dependenciesNode = asNode().appendNode('dependencies')
                     //Iterate over the compile dependencies (we don't want the test ones), adding a <dependency> node for each
