@@ -1,1 +1,1 @@
-include ':app', ':library', ':linkedin-sdk', ':WeChat-sdk'
+include ':app', ':library', ':linkedin-sdk'
