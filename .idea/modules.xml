@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SocialLoginLibrary-Android.iml" filepath="$PROJECT_DIR$/SocialLoginLibrary-Android.iml" />
-      <module fileurl="file://$PROJECT_DIR$/SocialLoginLibrary-Android.iml" filepath="$PROJECT_DIR$/SocialLoginLibrary-Android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SocialLoginLibrary-Android.iml" filepath="$PROJECT_DIR$/SocialLoginLibrary-Android.iml" group="SocialLoginLibrary-Android" />
       <module fileurl="file://$PROJECT_DIR$/WeChat-sdk/WeChat-sdk.iml" filepath="$PROJECT_DIR$/WeChat-sdk/WeChat-sdk.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
-      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
-      <module fileurl="file://$PROJECT_DIR$/linkedin-sdk/linkedin-sdk.iml" filepath="$PROJECT_DIR$/linkedin-sdk/linkedin-sdk.iml" />
-      <module fileurl="file://$PROJECT_DIR$/linkedin-sdk/linkedin-sdk.iml" filepath="$PROJECT_DIR$/linkedin-sdk/linkedin-sdk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="SocialLoginLibrary-Android/app" />
+      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" group="SocialLoginLibrary-Android/library" />
+      <module fileurl="file://$PROJECT_DIR$/linkedin-sdk/linkedin-sdk.iml" filepath="$PROJECT_DIR$/linkedin-sdk/linkedin-sdk.iml" group="SocialLoginLibrary-Android/linkedin-sdk" />
     </modules>
   </component>
 </project>
