@@ -24,19 +24,9 @@ android {
         }
     }
 
-    flavorDimensions "social"
-
-    productFlavors {
-
-        sdks {
-            dimension "social"
-        }
-
-    }
-
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
-        sdks.java.srcDirs += 'src/sdks/kotlin'
+        main.java.srcDirs += 'src/sdks/kotlin'
     }
 }
 
@@ -48,9 +38,9 @@ dependencies {
 
     implementation deps.androidx.appcompat
 
-    sdksApi deps.social.facebook
-    sdksApi deps.social.google
-    sdksApi deps.social.wechat
+    implementation deps.social.facebook
+    implementation deps.social.google
+    implementation deps.social.wechat
 }
 
 allprojects {
