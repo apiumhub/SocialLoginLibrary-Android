@@ -32,7 +32,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(':linkedin-sdk')
 
     implementation deps.kotlin.stdlib
 
@@ -40,7 +39,6 @@ dependencies {
 
     implementation deps.social.facebook
     implementation deps.social.google
-    implementation deps.social.wechat
 }
 
 allprojects {
